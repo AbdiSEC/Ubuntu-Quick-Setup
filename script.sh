@@ -10,10 +10,13 @@ sudo apt install curl -y
 sudo apt install zsh -y
 
 # Set Zsh as the default shell
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) "$USER"
 
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Set the ZSH environment variable for non-interactive installation of Oh My Zsh
+export ZSH="$HOME/.oh-my-zsh"
+
+# Install Oh My Zsh without prompts
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Download the latest nvim.appimage and set permissions
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -31,9 +34,14 @@ else
         # Optional: Exposing nvim globally
         sudo mv squashfs-root /
         sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
-        nvim
     else
         echo "Failed to extract and execute Neovim."
         exit 1
     fi
 fi
+
+# Download and set up NVChad
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+
+# Run Neovim
+nvim
