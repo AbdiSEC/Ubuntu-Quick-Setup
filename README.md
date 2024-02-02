@@ -34,3 +34,12 @@ This script automates the setup process for Ubuntu by installing and configuring
 4. **Follow On-screen Prompts**: The script will guide you through the setup process. Ensure to review the script before executing it.
 
 
+Will be adding script for h-my-zsh config & plugins:
+
+ZSH_THEME="fletcherm"                                                                                                                 
+plugins=(git k z zsh-autosuggestions zsh-syntax-highlighting)
+
+https://github.com/supercrabtree/k/blob/master/readme.md
+https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+
