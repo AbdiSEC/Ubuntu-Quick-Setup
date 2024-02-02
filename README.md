@@ -1,6 +1,6 @@
-# Ubuntu Quick Setup Script
+# Ubuntu Quick Config Environment and Packages
 
-This script automates the setup process for Ubuntu by installing and configuring various tools and packages.
+This script automates the setup process for Ubuntu packages I use by basicly installing and configuring them.
 
 ## Features
 
