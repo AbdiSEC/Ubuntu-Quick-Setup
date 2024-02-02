@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# Update package repositories
+# Update package repo
 sudo apt update
 
-# Install curl (if not installed)
+# Install curl (should be already installed but just incase)
 sudo apt install curl -y
 
-# Install Zsh
+# Install Z shell
 sudo apt install zsh -y
 
-# Set Zsh as the default shell
+# Set Z shell as the default shell
 sudo chsh -s $(which zsh) "$USER"
 
 # Set the ZSH environment variable for non-interactive installation of Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 
-# Install Oh My Zsh without prompts
+# Install Oh My Zsh without prompts so it doesnt stop
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# Download the latest nvim.appimage and set permissions
+# Download the latest nvim.appimage and chmod it
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 
-# Attempt to run nvim.appimage
+# Attempt to run nvim.appimage coz it always does this and then you have to do the following
 if ./nvim.appimage; then
     echo "Neovim (nvim.appimage) executed successfully."
 else
@@ -31,7 +31,6 @@ else
     if [ -x ./squashfs-root/AppRun ]; then
         echo "Neovim extracted and executed successfully."
         ./squashfs-root/AppRun --version
-        # Optional: Exposing nvim globally
         sudo mv squashfs-root /
         sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
     else
@@ -40,7 +39,7 @@ else
     fi
 fi
 
-# Download and set up NVChad
+# Download and set NVChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
 # Run Neovim
