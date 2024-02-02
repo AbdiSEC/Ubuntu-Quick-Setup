@@ -42,5 +42,5 @@ fi
 # Download and set NVChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
-# Run Neovim
+# Run Neovim so it can do the extra nvchad installs
 nvim
